@@ -1,0 +1,14 @@
+# gitignore file
+#######################
+end.aux
+gg.aux
+gg.bbl
+gg.blg
+gg.lof
+gg.log
+gg.out
+gg.toc
+missfont.log
+texput.log
+titlepage.log
+

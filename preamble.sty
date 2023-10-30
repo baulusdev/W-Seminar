@@ -1,0 +1,44 @@
+\ProvidesPackage{preamble}
+
+
+\usepackage[
+left=3cm,
+right=4cm,
+top=3cm,
+bottom=2.5cm]{geometry} %Seitengestaltung
+\usepackage{graphicx} % Required for inserting images
+\usepackage[german]{babel}
+\usepackage{hyperref}
+\usepackage{bibgerm}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{multirow}
+
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+%onehalf spacing
+%\onehalfspacing
+
+
+
+
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\leftmark}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % set the \leftmark
+
