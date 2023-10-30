@@ -96,7 +96,7 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 % tcp, udp, http(s), tls/ssl,  
 % tor
 
-\subsection{OSI Modell}
+\subsection{Open System Interconnection Modell}
 
 
 	% Please add the following required packages to your document preamble:
@@ -111,18 +111,49 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 
 
 
-Das OSI-Modell wird benutzt, um den Aufbau eines Netzwerks zu vereinfachen, es ist ein tolles Werkzeug um das erstellen von sachen zu erleichtern
-
-
-
+	Das Open System Interconnect\footnote{dt: Offenes System für Kommunikationsverbindungen} Modell, auch OSI-Modell genannt, beschreibt die Voraussetzungen, die für eine Kommunikation innerhalb eines Netzwerks nötig sind. Dieses wurde 1983 von durch die `Internationale Organisation für Normung`, kurz `ISO` standardisiert. Dies ist notwendig, damit sich alle Komponenten im Netwerk, auch wenn diese von verschiedenen Herstellern produziert wurden, reibungslos miteinander funktionieren. Wenn ein Paket beispielsweise von einem Computer im Netwerk losgeschickt wird, muss es mehrere Stationen durchlaufen. Das Paket verlässt den Rechner über die Netzwerkkarte und wird durch ein Übertragungsmedium über weitere Netzwerkkomponenten, wie Hubs oder Router bis zur Netzwerkkarte des Zielrechners geleitet. Dort wird dieses dann Interpretiert, um korrekt dargestellt zu werden. All diese Schritte werden durch ein Protokoll festgehalten und durch das OSI-Modell spezifiziert, damit jede Station auf diesem Weg weiß, wohin das Paket möchte, woher es kommt und welche Eigenschaften es hat. So wird ein Standart geschaffen, mit dem alle Computersysteme miteinander kommunizieren können.
 	
+	Da diese  Datenkommunikation relativ komplex ist, wurde das Modell in sieben Schichten eingeteilt. Die oberen 4 Schichten gehören zu den `Host Layer(n)`\footnote{dt: Anwendungsorientierte Schichten}. Die unteren 3 Schichten werden `Media Layer`\footnote{dt: Transport Schichten} genannt. Jede Schicht behandelt eine Anforderung, die für eine funktionierende Kommunikation erfüllt werden muss. Ein zu übertragenes Paket durchläuft vor der Versendung die Schichten 7 - 2, wobei dem Paket bei jeder Schicht Protokoll-Informationen hinzugefügt werden, die dann im Protokoll des Datenpaketes auffindbar sind. Die erste und letzte Schicht wandelt das Paket in technisch übertragbare Daten um und schickt dieses über das Übertragsmedium weg. Das Übertragsmedium kann hierbei ein Kabel sein, oder aus einer Antenne bestehen. Auf der Empfängerseite wird dieser Prozess rückwärts durchgeführt. Hierbei wird die jeweilige Protokoll-Information nach der Interpretierung durch die jeweilige Schicht entfernt, bis zum Inhalt des Paketes.
+	
+	Im folgenden werden die einzelnen Schichten  einzeln beleuchtet, um einen besseren Einblick zu gewähren.
+
+
+\subsubsection{Anwendungsschicht}
+	Die Anwendungsschicht\footnote{engl. application layer} stellt die Daten dar, mit welchen der Nutzer interagiert. Softwareanwendungen, wie Web-Browser und E-Mail clients stützen sich auf die siebte Schicht, um dem Nutzer aussagekräftige Daten zu präsentieren. 
+	
+	Hierzu gehören Protokolle, wie HTTP\footnote{Hyper Text Transfer Protocol}, welches benutzt wird, um Websites welche in HTML\footnote{Hyper Text Markup Language} geschrieben sind zu präsentieren, oder SMTP\footnote{Simple Mail Transfer Protocol}, welches benutzt wird um E-Mails zu präsentieren.
+
+\subsubsection{Präsentationsschicht}
+	Die Präsentationsschicht\footnote{engl: presentation layer} ist in erster Linie dafür verantwortlich, die Daten so aufzubereiten, dass diese in der Anwendungsschicht verwendet werden können. Ein wichtiger Teil dabei ist die Verschlüsselung. Die Präsentationsschicht muss, wenn die Geräte durch eine verschlüsselte Verbindung kommunizieren, auf Senderseite eine Verschlüsselung hinzufügen und diese auf der Empfängerseite korrekt dekodieren. 
+	
+	Ebenso ist die Präsentationsschicht für die Komprimierung der Daten verantwortlich. Dadurch kann die Geschwindigkeit und Effizienz der Kommunikation erhöht und die benötigte Bandbreite minimiert werden.
+
+\subsubsection{Sitzungsschicht}
+	Anschließend folgt die Sitzungsschicht\footnote{engl: session layer}. Diese ist für das Öffnen und Schließen der Kommunikation der beiden Geräte zuständig. Hier wird die Kommunikation in Sitzungen eingeteilt. Eine Sitzung reicht von der Öffnung bis zur Schließung der Verbindung. Somit wird sicher gestellt, dass die Sitzung lange genug geöffnet bleibt, um alle Daten zu übertragen. Wenn alle Daten erfolgreich übertragen wurden, leitet die Sitzungsschicht die umgehende Schließung der Sitzung ein, um Ressourcen zu sparen. 
+	
+	Eine weitere sehr wichtige Aufgabe der Sitzungsschicht ist die Sicherung der Datenverbindung durch synchronisierte Checkpoints. Wenn beispielsweise bei der Übertragung einer 450 Megabyte großen Datei bei 230 Megabyte die Verbindung unterbrochen wird, kann nach einer Neuverbindung die Übertragung bei 230 Megabyte wieder aufgenommen werden, da es einLayer 4 ist für die End-to-End-Kommunikation zwischen den beiden Geräten verantwortlich. Dazu gehört auch, Daten vom Session Layer zu nehmen und sie in Abschnitte zu zerlegen, die Segmente genannt werden, bevor sie an den Layer 3 gesendet werden. Der Transport Layer des Empfangsgeräts ist für die Wiederzusammenstellung der Segmente zu Daten verantwortlich, die der Session Layer verarbeiten kann.
+	
+	Die Transportebene ist zudem für die Fluss- und Fehlersteuerung zuständig. Die Flusssteuerung bestimmt eine optimale Übertragungsgeschwindigkeit, um sicher zu stellen,  dass ein Sender mit einer schnellen Verbindung einen Empfänger mit einer langsamen Verbindung nicht überfordert. Die Transportebene führt eine Fehlerkontrolle auf der Empfängerseite durch, indem sie sicherstellt, dass die empfangenen Daten vollständig sind, und eine erneute Übertragung anfordert, falls dies nicht der Fall ist.
+	
+	Zu den Protokollen der Transportschicht gehören Checkpoint der Datei bei 230 Megabyte gibt. Ohne diese Checkpoints müsste der Transfer der Datei von vorne beginnen.
+
+\subsubsection{Transportschicht}
+ In der Transportschicht\footnote{engl: transport layer} werden die Datenpakete vor dem Versenden in Segmente zerlegt. Im Empfangsgerät werden die diese Segmente durch die Transportschicht wieder korrekt zusammengesetzt, sodass diese von der Sitzungsschicht benutzt werden können. 
+ 
+ Die Transportebene ist ebenfalls für die Fluss- und Fehlersteuerung zuständig. Hierbei wird die Übertragungsgeschwindigkeit so festgelegt, dass ein ggf. langsamer Empfänger nicht durch die ggf. schnelle Geschwindigkeit des Senders überfordert wird. Beim Empfänger wird durch die Fehlersteuerung ein vollständiger Empfang aller Daten sichergestellt. Wenn die empfangenen Daten nicht vollständig sind, werden diese durch dieses System erneut angefordert, um die Vollständigkeit der Daten zu garantieren. 
+ 
+ Hierzu gehören die Protokolle `Transmission Control Protocol` (TCP) und `User Datagram Protocol` (UDP)
+ 
+ 
+\paragraph{Exkurs: UDP/TCP}
+   
 \subsubsection{Bitübertragungsschicht}
 \subsubsection{Sicherungsschicht}
 \subsubsection{Netzwerkschicht}
- \subsubsection{Transportschicht}
- \subsubsection{Sitzungsschicht}
- \subsubsection{Präsentationsschicht}
- \subsubsection{Anwendungsschicht}
+
+
+
+
 
 \section{Analyse}
 \subsection{Beispiel}
