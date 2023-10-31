@@ -5,7 +5,7 @@
 
 
 %title, author, date
-\title{Netzwerkanalyse mit Wireshark: Welche (Meta-)daten werden weitergegeben?}
+\title{Netzwerkanalyse mit Wireshark: Was passiert im Netzwerk?}
 \author{Luis Herzog}
 \date{April 2023}
 
@@ -45,20 +45,20 @@ Bevor man über die Wireshark Software sprechen kann, müssen die Basics geklär
 	\item Was sind Protokolle?
 	\item Welche Protokolle gibt es?
 	\item Wie funktionieren die Protokolle?
-	\item das OSI Modell (IP/TCP)
 	\item welcche Protokolle (welche können ausgelesen werden?
 \end{itemize}
-\section{Metadaten}
-Metadaten sind tolle Daten \textbf{TODOO}
-\subsection{Verwendungszwecke}
+
+\section{Daten}
+\subsection{Metadaten}
 
 
 
 \section{Das Programm: Wireshark}
+
+Als ``Schweizer Taschenmesser``\cite{schweizer-taschenmesser} wird es von heise.de bezeichnet. Es wird so gut wie überall in der IT-Branche benutzt. Sei es beim Finden von Netzwerkproblemen oder beim Lernen, wie ein Netzwerk funktioniert. Es bietet eine Menge Möglichkeiten
 \subsection{Programm}
 
 
-Wireshark ist eine Netzwerkpaketanalyse Software. Diese kann den aufgenommenen Netzwerktraffic in hohem Detail darstellen, um die Analyse dessen zu erleichtern. Die Darstellung der Ergebnisse erfolgt zum einen in Textform und zum anderen in Form von Grafiken, wie Diagrammen. Das Programm ist Open Source\footnote{Der Code des Programms ist öffentlich} und auf vielen Plattformen installierbar. Dazu gehören Windows, MacOS, Linux, Unix und BSD-Derivative. Im unteren Screenshot wird der Netzwerktraffic in einer VPN, in diesem Fall Mullvad VPN\footnote{\href{https://www.mullvad.net}{www.mullvad.net}} untersucht. Was direkt auffällt ist die Menge an Requests, die in nur wenigen Sekunden gesendet werden.
 
 \begin{figure}[h]
 	\begin{center}
@@ -80,12 +80,11 @@ Wireshark ist eine Software mit sehr vielen Funktionen. Sie bietet wirklich alle
 Besonders die letztere Funktion ist sehr wichtig, da man ohne diese schnell die Orientierung in der Software verlieren kann. \cite{features}
 
 \subsection{Anwendungsbereiche}
-Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allein deswegen wird es auch als Schweizer Taschenmesser der Netzwerktechnik bezeichnet. Somit kann Wireshark in sehr vielen Situationen Anwendung finden. Es kann beispielsweise von Netzwerk Administratoren benutzt werden, um Netzwerk Probleme  zu Analysieren und zu lösen. Es kann außerdem von Netzwerk Sicherheits Analysten benuzt werden, um Sicherheitsprobleme in Netzwerken zu finden. Wiederum kann es auch von Anwendungsentwicklern benutzt werden, um Netzwerkprotokoll Implementationen zu debuggen. Zuletzt kann es auch benutzt werden um mehr über Netzwerktraffic zu lernen und diesen zu Analysieren. Es gibt natürlich auch viele weitere Möglichkeiten WIreshark zu benutzen. \cite{intendedpurposes}
-
-
-
+Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allein deswegen wird es auch als Schweizer Taschenmesser der Netzwerktechnik bezeichnet. Somit kann Wireshark in sehr vielen Situationen Anwendung finden. Es kann beispielsweise von Netzwerk Administratoren benutzt werden, um Netzwerk Probleme  zu Analysieren und zu lösen. Es kann außerdem von den Sicherheitsanalysten eines Netzwerks benuzt werden, um Sicherheitsprobleme in Netzwerken zu finden. Wiederum kann es auch von Anwendungsentwicklern benutzt werden, um Netzwerkprotokoll Implementationen zu debuggen. Zuletzt kann es auch benutzt werden um mehr über Netzwerktraffic zu lernen und diesen zu Analysieren. Es gibt natürlich auch viele weitere Möglichkeiten Wireshark zu benutzen. \cite{intendedpurposes}
 
 \newpage
+
+
 
 
 
@@ -98,9 +97,6 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 
 \subsection{Open System Interconnection Modell}
 
-
-	% Please add the following required packages to your document preamble:
-	% \usepackage{multirow}
 \begin{wrapfigure}{r}{0pt}
 	\centering
 	\includegraphics[scale=0.1]{Bilder/OSI-Modell}
@@ -109,17 +105,14 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 	
 \end{wrapfigure}
 
-
-
 	Das Open System Interconnect\footnote{dt: Offenes System für Kommunikationsverbindungen} Modell, auch OSI-Modell genannt, beschreibt die Voraussetzungen, die für eine Kommunikation innerhalb eines Netzwerks nötig sind. Dieses wurde 1983 von durch die `Internationale Organisation für Normung`, kurz `ISO` standardisiert. Dies ist notwendig, damit sich alle Komponenten im Netwerk, auch wenn diese von verschiedenen Herstellern produziert wurden, reibungslos miteinander funktionieren. Wenn ein Paket beispielsweise von einem Computer im Netwerk losgeschickt wird, muss es mehrere Stationen durchlaufen. Das Paket verlässt den Rechner über die Netzwerkkarte und wird durch ein Übertragungsmedium über weitere Netzwerkkomponenten, wie Hubs oder Router bis zur Netzwerkkarte des Zielrechners geleitet. Dort wird dieses dann Interpretiert, um korrekt dargestellt zu werden. All diese Schritte werden durch ein Protokoll festgehalten und durch das OSI-Modell spezifiziert, damit jede Station auf diesem Weg weiß, wohin das Paket möchte, woher es kommt und welche Eigenschaften es hat. So wird ein Standart geschaffen, mit dem alle Computersysteme miteinander kommunizieren können.
 	
-	Da diese  Datenkommunikation relativ komplex ist, wurde das Modell in sieben Schichten eingeteilt. Die oberen 4 Schichten gehören zu den `Host Layer(n)`\footnote{dt: Anwendungsorientierte Schichten}. Die unteren 3 Schichten werden `Media Layer`\footnote{dt: Transport Schichten} genannt. Jede Schicht behandelt eine Anforderung, die für eine funktionierende Kommunikation erfüllt werden muss. Ein zu übertragenes Paket durchläuft vor der Versendung die Schichten 7 - 2, wobei dem Paket bei jeder Schicht Protokoll-Informationen hinzugefügt werden, die dann im Protokoll des Datenpaketes auffindbar sind. Die erste und letzte Schicht wandelt das Paket in technisch übertragbare Daten um und schickt dieses über das Übertragsmedium weg. Das Übertragsmedium kann hierbei ein Kabel sein, oder aus einer Antenne bestehen. Auf der Empfängerseite wird dieser Prozess rückwärts durchgeführt. Hierbei wird die jeweilige Protokoll-Information nach der Interpretierung durch die jeweilige Schicht entfernt, bis zum Inhalt des Paketes.
+	Da diese  Datenkommunikation relativ komplex ist, wurde das Modell in sieben Schichten eingeteilt. Die oberen vier Schichten gehören zu den Anwendungsorientierten Schichten\footnote{engl: Host layer}. Die unteren drei Schichten werden Transport Schichten\footnote{dt: Media layer} genannt. Jede Schicht behandelt eine Anforderung, die für eine funktionierende Kommunikation erfüllt werden muss. Ein zu übertragenes Paket durchläuft vor der Versendung die Schichten 7 - 2, wobei dem Paket bei jeder Schicht Protokoll-Informationen hinzugefügt werden, die dann im Protokoll des Datenpaketes auffindbar sind. Die erste und letzte Schicht wandelt das Paket in technisch übertragbare Daten um und schickt dieses über das Übertragsmedium weg. Das Übertragsmedium kann hierbei ein Kabel sein, oder aus einer Antenne bestehen. Auf der Empfängerseite wird dieser Prozess rückwärts durchgeführt. Hierbei wird die jeweilige Protokoll-Information nach der Interpretierung durch die jeweilige Schicht entfernt, bis zum Inhalt des Paketes.
 	
 	Im folgenden werden die einzelnen Schichten  einzeln beleuchtet, um einen besseren Einblick zu gewähren.
 
-
 \subsubsection{Anwendungsschicht}
-	Die Anwendungsschicht\footnote{engl. application layer} stellt die Daten dar, mit welchen der Nutzer interagiert. Softwareanwendungen, wie Web-Browser und E-Mail clients stützen sich auf die siebte Schicht, um dem Nutzer aussagekräftige Daten zu präsentieren. 
+	Die Anwendungsschicht\footnote{engl: application layer} stellt die Daten dar, mit welchen der Nutzer interagiert. Softwareanwendungen, wie Web-Browser und E-Mail clients stützen sich auf die siebte Schicht, um dem Nutzer aussagekräftige Daten zu präsentieren. 
 	
 	Hierzu gehören Protokolle, wie HTTP\footnote{Hyper Text Transfer Protocol}, welches benutzt wird, um Websites welche in HTML\footnote{Hyper Text Markup Language} geschrieben sind zu präsentieren, oder SMTP\footnote{Simple Mail Transfer Protocol}, welches benutzt wird um E-Mails zu präsentieren.
 
@@ -131,32 +124,68 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 \subsubsection{Sitzungsschicht}
 	Anschließend folgt die Sitzungsschicht\footnote{engl: session layer}. Diese ist für das Öffnen und Schließen der Kommunikation der beiden Geräte zuständig. Hier wird die Kommunikation in Sitzungen eingeteilt. Eine Sitzung reicht von der Öffnung bis zur Schließung der Verbindung. Somit wird sicher gestellt, dass die Sitzung lange genug geöffnet bleibt, um alle Daten zu übertragen. Wenn alle Daten erfolgreich übertragen wurden, leitet die Sitzungsschicht die umgehende Schließung der Sitzung ein, um Ressourcen zu sparen. 
 	
-	Eine weitere sehr wichtige Aufgabe der Sitzungsschicht ist die Sicherung der Datenverbindung durch synchronisierte Checkpoints. Wenn beispielsweise bei der Übertragung einer 450 Megabyte großen Datei bei 230 Megabyte die Verbindung unterbrochen wird, kann nach einer Neuverbindung die Übertragung bei 230 Megabyte wieder aufgenommen werden, da es einLayer 4 ist für die End-to-End-Kommunikation zwischen den beiden Geräten verantwortlich. Dazu gehört auch, Daten vom Session Layer zu nehmen und sie in Abschnitte zu zerlegen, die Segmente genannt werden, bevor sie an den Layer 3 gesendet werden. Der Transport Layer des Empfangsgeräts ist für die Wiederzusammenstellung der Segmente zu Daten verantwortlich, die der Session Layer verarbeiten kann.
-	
-	Die Transportebene ist zudem für die Fluss- und Fehlersteuerung zuständig. Die Flusssteuerung bestimmt eine optimale Übertragungsgeschwindigkeit, um sicher zu stellen,  dass ein Sender mit einer schnellen Verbindung einen Empfänger mit einer langsamen Verbindung nicht überfordert. Die Transportebene führt eine Fehlerkontrolle auf der Empfängerseite durch, indem sie sicherstellt, dass die empfangenen Daten vollständig sind, und eine erneute Übertragung anfordert, falls dies nicht der Fall ist.
-	
-	Zu den Protokollen der Transportschicht gehören Checkpoint der Datei bei 230 Megabyte gibt. Ohne diese Checkpoints müsste der Transfer der Datei von vorne beginnen.
+	Eine weitere sehr wichtige Aufgabe der Sitzungsschicht ist die Sicherung der Datenverbindung durch synchronisierte Checkpoints. Wenn beispielsweise bei der Übertragung einer 450 Megabyte großen Datei bei 234 Megabyte die Verbindung unterbrochen wird, kann nach einer Neuverbindung die Übertragung bei 230 Megabyte wieder aufgenommen werden, da es einen Checkpoint der Datei bei 230 Megabyte gibt.
 
 \subsubsection{Transportschicht}
- In der Transportschicht\footnote{engl: transport layer} werden die Datenpakete vor dem Versenden in Segmente zerlegt. Im Empfangsgerät werden die diese Segmente durch die Transportschicht wieder korrekt zusammengesetzt, sodass diese von der Sitzungsschicht benutzt werden können. 
- 
- Die Transportebene ist ebenfalls für die Fluss- und Fehlersteuerung zuständig. Hierbei wird die Übertragungsgeschwindigkeit so festgelegt, dass ein ggf. langsamer Empfänger nicht durch die ggf. schnelle Geschwindigkeit des Senders überfordert wird. Beim Empfänger wird durch die Fehlersteuerung ein vollständiger Empfang aller Daten sichergestellt. Wenn die empfangenen Daten nicht vollständig sind, werden diese durch dieses System erneut angefordert, um die Vollständigkeit der Daten zu garantieren. 
- 
- Hierzu gehören die Protokolle `Transmission Control Protocol` (TCP) und `User Datagram Protocol` (UDP)
- 
- 
+	In der Transportschicht\footnote{engl: transport layer} werden die Datenpakete vor dem Versenden in Segmente zerlegt. Im Empfangsgerät werden die diese Segmente durch die Transportschicht wieder korrekt zusammengesetzt, sodass diese von der Sitzungsschicht benutzt werden können. 
+	
+	Die Transportebene ist ebenfalls für die Fluss- und Fehlersteuerung zuständig. Hierbei wird die Übertragungsgeschwindigkeit so festgelegt, dass ein ggf. langsamer Empfänger nicht durch die ggf. schnelle Geschwindigkeit des Senders überfordert wird. Beim Empfänger wird durch die Fehlersteuerung ein vollständiger Empfang aller Daten sichergestellt. Wenn die empfangenen Daten nicht vollständig sind, werden diese durch dieses System erneut angefordert, um die Vollständigkeit der Daten zu garantieren. 
+	
+	Hierzu gehören die Protokolle TCP\footnote{Transmission Control Protocol} und UDP\footnote{User Datagram Protocol}
+
 \paragraph{Exkurs: UDP/TCP}
    
-\subsubsection{Bitübertragungsschicht}
-\subsubsection{Sicherungsschicht}
+   
 \subsubsection{Netzwerkschicht}
+	Darauf folgt die Netzwerkschicht\footnote{engl: network layer}. Diese gewährt das Kommunizieren zwischen Geräten in verschiedenen, miteinander verbundenen Netzwerken. Beim Versenden, werden die Segmente der Transportschicht erneut in kleinere Datenpakete aufgeteilt und mit weiteren Informationen versehen. Diese Informationen sind für die, auf dem Weg gelegenen, Knoten gedacht, um diesen das Ziel des Pakets aufzuweisen. Es wird der beste physikalisch mögliche Weg ausgesucht, um die Daten sicher an ihr Ziel zu bringen. Dieser Prozess wird Routing\footnote{Quelle!} genannt.
+	Wenn sich beide Geräte im selben Netzwerk befinden, wird diese Ebene übersprungen. 
+	
+	Zu den Protokollen für diese Schicht gehören das IP\footnote{Internet Protocol}, das ICMP\footnote{Internet Control Message Protocol}, das IGMP\footnote{Internet Group Message Protocol} und die IPsec\footnote{??} Suite. Ein Beispielgerät wäre ein Router.
+	
+\subsubsection{Sicherungsschicht}
+	Die Sicherungsschicht\footnote{engl: Data Link Layer} stellt die vorletzte Schicht dar. Diese ist der Netzwerkschicht sehr ähnlich. Der wesentliche Unterschied ist, dass die Sicherungsschicht für die Kommunikation von zwei Geräten innerhalb eines Netzwerks zuständig ist. Die Sicherungsschicht ist ebenfalls für die Fluss- und Fehlerkontrolle in der netzinternen Kommunikation zuständig. 
+	
+	Beispielgeräte für diese Ebene wären Bridges und Switches.
+
+\subsubsection{Bitübertragungsschicht}
+	Die unterste Schicht wird durch die Bitübertragungsschicht\footnote{engl: physical layer} dargestellt. Hier sind die Daten als Bitstrom vorhanden, eine Zeichenkette bestehend aus einen und nullen. Hier muss sich auf mehrere Konventionen geeinigt werden. Zu Beginn müssen die Gegebenheiten des Übertragungsmediums festgelegt werden. Dies betrifft die Wahl des Materials und die Funktion der einzelnen Leitungen. Ein Kabel kann beispielsweise aus Kupfer oder Glasfaser bestehen und zwei innere Leitungen haben: eine Datenleitung und eine Steuerleitung. Bei der Übertragung über Funk wird beispielsweise durch Luft übertragen. Es muss ebenfalls die Übertragungsrichtung und Geschwindigkeit festgelegt werden. Ein Kabel kann in eine Richtung\footnote{simplex}, abwechselnd in beide Richtungen\footnote{halb-duplex} oder in beide Richtungen gleichzeitig\footnote{duplex} übertragen.
 
 
 
 
 
 \section{Analyse}
+In der Analyse soll viel benutzte Software getestet werden. Ich habe mich für Web-Browser entschieden, da diese am meisten benutzt werden\footnote{QUELLE!}. Zu beginn soll die Software getestet werden. Hierfür habe ich einen simplen Test erstellt.
 \subsection{Beispiel}
+In diesem Beispiel wird ein Webserver erstellt und anschließend kontaktiert. Dieser Transfer wird dann durch Wireshark aufgezeichnet.
+\subsubsection{Der Webserver}
+Code: 
+
+\begin{lstlisting}
+	from flask import Flask
+	import os
+	from datetime import datetime
+	
+	hostName = "localhost"
+	serverPort = 8080
+	app = Flask(__name__)
+	@app.route('/')
+	def index():
+	return '<p>willkommen in der http webserver demo</p>'
+	@app.route('/time')
+	def time():
+	now = datetime.now()
+	current_time = now.strftime("%H:%M:%S")
+	return f'Jetzige Zeit: {current_time}'
+	
+	if __name__ == '__main__':
+	app.run(host=hostName, port=serverPort)
+\end{lstlisting}
+
+
+\subsubsection{Das `loopback device`}
+\subsubsection{Ergebnis}
+
 \subsection{Browser}
 \subsubsection{Mozilla Firefox}
 \subsubsection{Microsoft Edge}
