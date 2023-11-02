@@ -2,39 +2,28 @@
 
 \usepackage{preamble}
 
-
-
 %title, author, date
 \title{Netzwerkanalyse mit Wireshark: Was passiert im Netzwerk?}
 \author{Luis Herzog}
 \date{April 2023}
 
-
-
-
 \begin{document}
-
-
-
-
 
 %Titlepage
 
 \maketitle
 
-
-\thispagestyle{empty}
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.1]{Bilder/Wireshark_icon.svg.png}
-	\caption{Wireshark Logo}
+	\caption{Wireshark Logo \cite{wireshark-logo}}
 	\label{fig:figure1}
 \end{figure}
 
-
+\thispagestyle{empty}
 \newpage
 \tableofcontents
+\thispagestyle{empty}
 \newpage
 
 Es gibt viele verschiedenen Arten von Daten. Somit ebenfalls verschiedene Definitionen. 
@@ -55,38 +44,37 @@ Bevor man über die Wireshark Software sprechen kann, müssen die Basics geklär
 
 \section{Das Programm: Wireshark}
 
-Als ``Schweizer Taschenmesser``\cite{schweizer-taschenmesser} wird es von heise.de bezeichnet. Es wird so gut wie überall in der IT-Branche benutzt. Sei es beim Finden von Netzwerkproblemen oder beim Lernen, wie ein Netzwerk funktioniert. Es bietet eine Menge Möglichkeiten
-\subsection{Programm}
+Als ``Schweizer Taschenmesser``\cite{schweizer-taschenmesser} wird es von heise.de bezeichnet. Wireshark wird so gut wie überall in der IT-Branche benutzt. Sei es beim Finden von Netzwerkproblemen oder beim Lernen, wie ein Netzwerk funktioniert. Somit bietet das Programm eine Menge Möglichkeiten.
 
+\subsection{Geschichte}
+Wireshark wurde 1997 von Gerald Combs als `Ethereal` ins Leben gerufen. Das Programm wurde im Juli 1998 als Version 0.2.0 unter einer GPL Lizenz\cite{gnu-gpl} veröffentlich.\cite{gnu-wireshark} Somit konnten viele Menschen am Code des Programms mithelfen, um es zu verbessern. Im Jahr 2006 wurde das Projekt in `Wireshark` umbenannt. Anschließend wurde  im Jahr 2008 die Version 1.0 als erste komplette Version veröffentlicht. Sieben Jahre später wurde 2015 die Version 2.0 mit einem komplett neuen Benutzeroberfläche vorgestellt. Letztendlich wurde im Jahr 2023 die Wireshark Foundation\footnote{https://wiresharkfoundation.org/} gegründet, welche jetzt das Programm stützt. \cite{wireshark-history}
+
+\subsection{Programm}
+Wireshark ist ein ``network packet analyzer``\cite{what-is-wireshark}. Es erlaubt dem Benutzer den Netzwerkverkehr aufzunehmen und zu analysieren. Mit Wireshark kann man sozusagen in ein Netzwerkkabel `reinschauen`.
+
+\subsection{Funktionsumfang}
+
+Wireshark ist eine Software mit sehr vielen Funktionen und bietet fast alles rund um das Thema Netzwerkanalyse. Mit wireshark kann man den Netzwerkverkehr aufnehmen, mit hohem Detail darstellen und einfach exportieren oder speichern. Außerdem kann man exportierte Netzwerkdumps von Wireshark anderen Programmen importieren. Da Wireshark sowohl auf UNIX Platformen, als auch auf Windows verfügbar ist, geht dies sogar Plattformübergreifend. Ebenso kann man die Datenpakete anhand verschiedener Kriterien Filtern und durchsuchen. Die gerade eben genannten Funktionen kratzen aber nur an der Oberfläche. Wireshark bietet noch viel mehr Funktionen.\cite{features}
+
+\subsection{Die Benutzeroberfläche}
+
+Das voreingestellte Layout ist im unteren Screenshot dargestellt. In diesem Fall wird gerade die Netzwerkschnittstelle `wg-mullvad` aufgezeichnet. Im oberen Teil ist die Symbolleiste zu finden. Dort findet man Knöpfe zum starten und stoppen der Aufnahme.  Recht daneben befinden sich die Knöpfe zum Laden und Speichern von Netzwerkdumps. Weiter rechts folgen Knöpfe zum Sortieren der Paketliste. Darunter befindet sich die Liste mit den aufgenommenen Paketen. Dort kann direkt die Zeit, Quelle und Ziel des Pakets abgelesen werden. Rechts daneben kann das benutzte Netzwerkprotokoll und die Länge abgelesen werden. Ganz rechts steht weitere Information zum Paket. Unter dieser Liste befinden sich zwei Fenster. Rechts steht der rohe Inhalt des Pakets. Links hingegen steht der von Wireshark automatisch ausgelesene und geordnete Inhalt des Pakets. Hier kann jegliche Information zum Datenpaket gefunden werden. Unter diesem Fenster steht der Name der Quelle, deren Netzwerkverkehr aufgezeichnet wird. Unten ist ein Beispielscreenshot zu sehen.
 
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.25]{Bilder/Screenshot_1.png}
 		\label{fig:figure2}
-		\caption{Beispielscreenshot aus der Wireshark Software}
+		\caption{Beispielscreenshot aus der Wireshark Software \cite{screenshots-self}}
 	\end{center}
 \end{figure}
 
 
-\subsection{Funktionsumfang}
-
-Wireshark ist eine Software mit sehr vielen Funktionen. Sie bietet wirklich alles rund um das Thema Netzwerkanalyse. Die wichtigsten Funktionen sind:
-\begin{itemize}
-	\item Die Verfügbarkeit aus sehr vielen Platformen
-	\item Die Möglichkeit dumps von anderen Personen importieren zu können
-	\item Das Filtern von Paketen nach sehr vielen Kriterien
-\end{itemize}
-Besonders die letztere Funktion ist sehr wichtig, da man ohne diese schnell die Orientierung in der Software verlieren kann. \cite{features}
 
 \subsection{Anwendungsbereiche}
-Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allein deswegen wird es auch als Schweizer Taschenmesser der Netzwerktechnik bezeichnet. Somit kann Wireshark in sehr vielen Situationen Anwendung finden. Es kann beispielsweise von Netzwerk Administratoren benutzt werden, um Netzwerk Probleme  zu Analysieren und zu lösen. Es kann außerdem von den Sicherheitsanalysten eines Netzwerks benuzt werden, um Sicherheitsprobleme in Netzwerken zu finden. Wiederum kann es auch von Anwendungsentwicklern benutzt werden, um Netzwerkprotokoll Implementationen zu debuggen. Zuletzt kann es auch benutzt werden um mehr über Netzwerktraffic zu lernen und diesen zu Analysieren. Es gibt natürlich auch viele weitere Möglichkeiten Wireshark zu benutzen. \cite{intendedpurposes}
+Wie schon im oberen Teil dargestellt, bietet Wireshark sehr viele Funktionen. Somit kann Wireshark in sehr vielen Situationen Anwendung finden. Es kann beispielsweise von Netzwerk Administratoren zum Finden, Analysieren und Lösen von Netzwerkproblemen benutzt werden. Das Programm kann außerdem von Sicherheitsanalysten eines Netzwerks benutzt werden, um Sicherheitsprobleme in Netzwerken zu finden. Wiederum kann es auch von Anwendungsentwicklern benutzt werden, um die Umsetzung von Netzwerkprotokollen auszutesten. Zuletzt kann es auch benutzt werden um mehr über das Netzwerk und den Netzwerkverkehr zu lernen und diesen zu analysieren. Es gibt natürlich auch viele weitere Möglichkeiten Wireshark zu benutzen. \cite{intended-purposes}
 
 \newpage
-
-
-
-
 
 \section{Netzwerk}
 
@@ -97,13 +85,31 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 
 \subsection{Open System Interconnection Modell}
 
-\begin{wrapfigure}{r}{0pt}
-	\centering
-	\includegraphics[scale=0.1]{Bilder/OSI-Modell}
-	\caption{OSI-Modell}
-	\label{fig:figure3}
+
 	
-\end{wrapfigure}
+	\begin{wraptable}{r}{0pt}
+		\centering
+		\resizebox{0.6\textwidth}{!}{
+			\begin{tabular}{|
+					>{\columncolor[HTML]{C0C0C0}}l 
+					>{\columncolor[HTML]{9B9B9B}}l l|}
+				\hline
+				\multicolumn{3}{|l|}{\cellcolor[HTML]{FFFFFF}OSI-Modell}                                                                                                             \\ \hline
+				\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}}                               & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}7} & \cellcolor[HTML]{34FF34}Application  \\ \cline{2-3} 
+				\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}}                               & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}6} & \cellcolor[HTML]{34FF34}Presentation \\ \cline{2-3} 
+				\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}}                               & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}5} & \cellcolor[HTML]{34FF34}Session      \\ \cline{2-3} 
+				\multicolumn{1}{|l|}{\multirow{-4}{*}{\cellcolor[HTML]{C0C0C0}Host Layers}}  & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}4} & \cellcolor[HTML]{67FD9A}Transport    \\ \hline
+				\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}}                               & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}3} & \cellcolor[HTML]{F8FF00}Network      \\ \cline{2-3} 
+				\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}}                               & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}2} & \cellcolor[HTML]{F56B00}Data Link    \\ \cline{2-3} 
+				\multicolumn{1}{|l|}{\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Media Layers}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}1} & \cellcolor[HTML]{FE0000}Physical     \\ \hline
+			\end{tabular}%
+		}
+			\caption{OSI-Modell \cite{osi-table}}
+		\label{fig:figure3}
+	\end{wraptable}
+
+	
+
 
 	Das Open System Interconnect\footnote{dt: Offenes System für Kommunikationsverbindungen} Modell, auch OSI-Modell genannt, beschreibt die Voraussetzungen, die für eine Kommunikation innerhalb eines Netzwerks nötig sind. Dieses wurde 1983 von durch die `Internationale Organisation für Normung`, kurz `ISO` standardisiert. Dies ist notwendig, damit sich alle Komponenten im Netwerk, auch wenn diese von verschiedenen Herstellern produziert wurden, reibungslos miteinander funktionieren. Wenn ein Paket beispielsweise von einem Computer im Netwerk losgeschickt wird, muss es mehrere Stationen durchlaufen. Das Paket verlässt den Rechner über die Netzwerkkarte und wird durch ein Übertragungsmedium über weitere Netzwerkkomponenten, wie Hubs oder Router bis zur Netzwerkkarte des Zielrechners geleitet. Dort wird dieses dann Interpretiert, um korrekt dargestellt zu werden. All diese Schritte werden durch ein Protokoll festgehalten und durch das OSI-Modell spezifiziert, damit jede Station auf diesem Weg weiß, wohin das Paket möchte, woher es kommt und welche Eigenschaften es hat. So wird ein Standart geschaffen, mit dem alle Computersysteme miteinander kommunizieren können.
 	
@@ -157,34 +163,49 @@ Wie im oberen Teil schon dargestellt, hat Wireshark sehr viele Funktionen. Allei
 \section{Analyse}
 In der Analyse soll viel benutzte Software getestet werden. Ich habe mich für Web-Browser entschieden, da diese am meisten benutzt werden\footnote{QUELLE!}. Zu beginn soll die Software getestet werden. Hierfür habe ich einen simplen Test erstellt.
 \subsection{Beispiel}
-In diesem Beispiel wird ein Webserver erstellt und anschließend kontaktiert. Dieser Transfer wird dann durch Wireshark aufgezeichnet.
+In diesem Kapitel soll eine Beispielkommunikation vereinfacht dargestellt werden. Es wird ein lokaler Webserver erstellt und anschließend kontaktiert. Dieser Transfer wird dann durch Wireshark aufgezeichnet.
+
 \subsubsection{Der Webserver}
 Code: 
 
 \begin{lstlisting}
-	from flask import Flask
+	from flask import Flask #importieren von den benoetigten Bibliotheken
 	import os
 	from datetime import datetime
 	
-	hostName = "localhost"
-	serverPort = 8080
-	app = Flask(__name__)
-	@app.route('/')
+	hostName = "localhost" #setzen des Hostnamen
+	serverPort = 8080 #setzen des Ports (Erklaerung unter dem Code)
+	app = Flask(__name__) #der Flask Server wird instanziert
+	@app.route('/') #wenn zum index geroutet wird...
 	def index():
-	return '<p>willkommen in der http webserver demo</p>'
-	@app.route('/time')
+	return '<p>willkommen in der http webserver demo</p>'  #...soll diese response zurueckgeschickt werden
+	@app.route('/time') #wenn zu /time geroutet wird...
 	def time():
 	now = datetime.now()
-	current_time = now.strftime("%H:%M:%S")
-	return f'Jetzige Zeit: {current_time}'
+	current_time = now.strftime("%H:%M:%S") #erstellen der response
+	return f'Jetzige Zeit: {current_time}' #...soll diese response zurueckgeschickt werden
 	
 	if __name__ == '__main__':
-	app.run(host=hostName, port=serverPort)
+	app.run(host=hostName, port=serverPort) #starten des Servers
 \end{lstlisting}
 
+Mit der `flask`Bibliothek können Webserver in Python leicht umgesetzt werden. Sie erlaubt es Webserver zu erstellen, die auf requests hören und mit dem angefragten Inhalt antworten\cite{flask}
 
+\paragraph{Weitere Erklärung zum Code:}
+``Ports sind ein Merkmal der Protokolle TCP und UDP``\cite{ports19}. Diese werden benutzt, um den Datenverkehr zu ordnen. Da auf einem Server oft mehrere Programme aktiv sind, die gleichzeitig über das Netzwerk kommunizieren müssen diese eingeteilt werden, sodass die Pakete nicht durcheinander kommen. Jedes Programm legt seinen Port fest, bzw. bekommt vom Betriebssystem einen Port zugewiesen. Dieser kann zwischen 0 und 65535 liegen.\cite{ports}
+
+Anschließend wird Wireshark geöffnet und das richtige Interface, welches aufgenommen werden soll, ausgewählt. In `diesem Fall ist es das `Loopback:io` interface. \textbf{(siehe: Anlagen, Das Wireshark interface, auswählen des Loopback Geräts)}
 \subsubsection{Das `loopback device`}
+
+Das Loopback interace ist eine ``Pseudo-Netzwerkschnittstelle zum gefahrenlosen Testen``\cite{loopback-munich}. Der Nertzwerktraffic wird in diesem Fall, da der Server auf `localhost`live ist. Das loopback interface agiert als virtuelle Netzwerkkarte und ist nicht wirklich als Hardware vorhanden. Da ich diesen Test auf einem Linux Betriebssystem durchführe ist diese Funktion durch Wireshark unterstützt.\cite{loopback-wireshark}
+
 \subsubsection{Ergebnis}
+
+Nun muss der Server kontaktiert werden. Dies kann man mit einem Web-Browser machen. Mit Firefox habe ich dann `http://localhost:8080` kontaktiert. In Wireshark sind direkt mehrere neue Einträge zu erkennen. \textbf{(siehe: Anlagen, der Datentransfer wurde aufgezeichnet)}
+
+Im nächsten Schritt wird das erste request, mit dem `HTTP` Protocoll angesehen. \textbf{(siehe: Anlagen, Analyse des `GET` requests)}. Unten rechts ist der Inhalt des Pakets zu erkennen. Darin sind einige Daten zum Browser enthalten und zum Inhalt, welcher angefragt wird. Diese Daten werden später in der Analyse weiter durchleuchtet.
+
+Der Server antwortet mit diesem angeforderten Inhalt \textbf{(siehe: Anlagen, Analyse der response)}. Der Inhalt ist, der oben im Code festgelegte Satz, ``Willkommen in der http Webserver demo``
 
 \subsection{Browser}
 \subsubsection{Mozilla Firefox}
@@ -201,6 +222,7 @@ Code:
 
 \newpage
  \listoffigures
+ \listoftables
 \newpage
 \bibliographystyle{plain}
 \bibliography{gg}
@@ -210,6 +232,43 @@ Code:
 \centering
 \vspace*{200pt}
 \Huge{\section{Anlagen}}
+\newpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{Bilder/Anlagen_1}
+	\caption{Das Wireshark interface, auswählen des Loopback Geräts \cite{screenshots-self}}
+	\label{fig:figure30}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{Bilder/Anlagen_2}
+	\caption{Das Wireshark interface, warten auf Datentransfer \cite{screenshots-self}}
+	\label{fig:figure31}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{Bilder/Anlagen_3}
+	\caption{Das Wireshark interface, der Datentransfer wurde aufgezeichnet \cite{screenshots-self}}
+	\label{fig:figure32}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{Bilder/Anlagen_4}
+	\caption{Das Wireshark interface, Analyse des `GET` requests \cite{screenshots-self}}
+	\label{fig:figure33}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{Bilder/Anlagen_5}
+	\caption{Das Wireshark interface, Analyse der response \cite{screenshots-self}}
+	\label{fig:figure34}
+\end{figure}
+
 
 \end{document}
 
