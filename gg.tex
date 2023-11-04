@@ -26,31 +26,24 @@
 \thispagestyle{empty}
 \newpage
 
-Es gibt viele verschiedenen Arten von Daten. Somit ebenfalls verschiedene Definitionen. 
 
-Bevor man über die Wireshark Software sprechen kann, müssen die Basics geklärt werden:
+Die Digitalisierung ist in aller Munde. Durch die Digitalisierung wächst die Anzahl von Netzwerken, nicht nur in Deutschland, sondern weltweit. Netzwerke werden überall benutzt. Die meisten Menschen besitzen Heimnetzwerke. Aber es gibt noch viel mehr Netzwerke, zum Beispiel in Flughäfen, Cafés, Bibliotheken und noch so viel mehr. Diese Vielfalt von Netzwerken lässt einen Gedanken aufleuchten: \glqq Wie funktionieren Netzwerke?\grqq. 
+Durch die Digitalisierung haben sich Netzwerke stark verändert und vor allem vergrößert. Dadurch sind Netzwerke oft sehr komplex. Die Wireshark Software erlaubt es, einen tieferen Blick in das Netzwerk zu werfen und Details herauszufinden. In dieser Arbeit wird die Arbeitsweise eines Netzwerks dargelegt und die Wireshark Software erklärt. 
 
-\begin{itemize}
-	\item Was sind Protokolle?
-	\item Welche Protokolle gibt es?
-	\item Wie funktionieren die Protokolle?
-	\item welcche Protokolle (welche können ausgelesen werden?
-\end{itemize}
+
+Bevor man über die Wireshark Software sprechen kann, müssen die fundamentalen Fakten geklärt werden:
 
 \section{Daten}
+Statista beschreibt Daten als \glqq Messwerte, die im Rahmen von Befragungen, Beobachtungen oder Experimenten erhoben werden\grqq\cite{statista-daten}. Der Duden gibt mehrere Definitionen. Die dritte Definition gibt Daten als``elektronisch gespeicherte Zeichen, Angaben, Informationen``\cite{duden-daten} an. Da es viele verschiedene Arten von Daten gibt, gibt es viele verschiedene Definitionen. Im Netzwerk beschreiben Daten den Inhalt Paketen. Zu diesem Inhalt gehören Informationen zum Paket und die zu vermittelnde Nachricht, welche alle durch elektronisch gespeicherte Zeichen dargestellt werden.
 \subsection{Metadaten}
-
-
+Hierzu gehören ebenfalls die Metadaten. Diese Daten sind die schon oben angegebenen Information über weitere Daten. Mit diesen Daten lässt sich der Inhalt besser Ordnen, Katalogisieren und Analysieren. Metadaten sind strukturierte Daten und können bei physischen Gegenständen, sowie bei digitalen Dateien Einsatz finden. Ein Beispiel für Metadaten wäre der Autor bei einem Buch, oder der Komponist bei einem Musikstück.\cite{metadaten-security-insider} In der Netzwerktechnik sind diese Metadaten besonders wichtig. Diese Metadaten sind im Adresskopf der Datenpakete gespeichert und enthalten beispielsweise Informationen über die Quelladresse und Zieladresse des Pakets, sowie über die Lebensdauer des Pakets.\cite{tcp+ip-netzwerkecom} Mehr hierzu wird später, unter \textbf{`Exkurs: UDP/TCP`} erklärt.
 
 \section{Das Programm: Wireshark}
 
-Als ``Schweizer Taschenmesser``\cite{schweizer-taschenmesser} wird es von heise.de bezeichnet. Wireshark wird so gut wie überall in der IT-Branche benutzt. Sei es beim Finden von Netzwerkproblemen oder beim Lernen, wie ein Netzwerk funktioniert. Somit bietet das Programm eine Menge Möglichkeiten.
+Als ``Schweizer Taschenmesser``\cite{schweizer-taschenmesser} der Netzwerktechnik wird es von heise.de bezeichnet. Wireshark wird so gut wie überall in der IT-Branche benutzt. Sei es beim Finden von Netzwerkproblemen oder beim Lernen, wie ein Netzwerk funktioniert. Somit bietet das Programm eine Menge Möglichkeiten. Wireshark ist ein ``network packet analyzer``\cite{what-is-wireshark}. Es erlaubt dem Benutzer den Netzwerkverkehr aufzunehmen und zu analysieren. Mit Wireshark kann man sozusagen in ein Netzwerkkabel `reinschauen`.
 
 \subsection{Geschichte}
 Wireshark wurde 1997 von Gerald Combs als `Ethereal` ins Leben gerufen. Das Programm wurde im Juli 1998 als Version 0.2.0 unter einer GPL Lizenz\cite{gnu-gpl} veröffentlich.\cite{gnu-wireshark} Somit konnten viele Menschen am Code des Programms mithelfen, um es zu verbessern. Im Jahr 2006 wurde das Projekt in `Wireshark` umbenannt. Anschließend wurde  im Jahr 2008 die Version 1.0 als erste komplette Version veröffentlicht. Sieben Jahre später wurde 2015 die Version 2.0 mit einem komplett neuen Benutzeroberfläche vorgestellt. Letztendlich wurde im Jahr 2023 die Wireshark Foundation\footnote{https://wiresharkfoundation.org/} gegründet, welche jetzt das Programm stützt. \cite{wireshark-history}
-
-\subsection{Programm}
-Wireshark ist ein ``network packet analyzer``\cite{what-is-wireshark}. Es erlaubt dem Benutzer den Netzwerkverkehr aufzunehmen und zu analysieren. Mit Wireshark kann man sozusagen in ein Netzwerkkabel `reinschauen`.
 
 \subsection{Funktionsumfang}
 
@@ -74,14 +67,36 @@ Das voreingestellte Layout ist im unteren Screenshot dargestellt. In diesem Fall
 \subsection{Anwendungsbereiche}
 Wie schon im oberen Teil dargestellt, bietet Wireshark sehr viele Funktionen. Somit kann Wireshark in sehr vielen Situationen Anwendung finden. Es kann beispielsweise von Netzwerk Administratoren zum Finden, Analysieren und Lösen von Netzwerkproblemen benutzt werden. Das Programm kann außerdem von Sicherheitsanalysten eines Netzwerks benutzt werden, um Sicherheitsprobleme in Netzwerken zu finden. Wiederum kann es auch von Anwendungsentwicklern benutzt werden, um die Umsetzung von Netzwerkprotokollen auszutesten. Zuletzt kann es auch benutzt werden um mehr über das Netzwerk und den Netzwerkverkehr zu lernen und diesen zu analysieren. Es gibt natürlich auch viele weitere Möglichkeiten Wireshark zu benutzen. \cite{intended-purposes}
 
-\newpage
+
 
 \section{Netzwerk}
-
+In der Informationstechnologie ist ein Netzwerk ein Zusammenschluss mehrerer Computer [...], die untereinander kommunizieren, also Daten untereinander austauschen können.\cite{netzwerk-kurthelec} Soweit geht die Definition.  
 \subsection{Aufbau}
+
+\begin{wrapfigure}{r}{0.65\textwidth}
+	\centering
+	\includegraphics[scale=0.1]{Bilder/NetzwerkTopologien.svg}
+	\caption{Die Netzwerktopologien \cite{topologien-darstellung}}
+	\label{fig:figure5}
+\end{wrapfigure}
+
+Es gibt allerdings viele verschiedene Arten von Netzwerken, welche unterschiedlich aufgebaut sind. Diese unterschiedlichen Netzwerke werden in Topologien unterteilt. Durch diese Topologien können selbst sehr komplexe Netzwerke gut veranschaulicht werden. Es gibt fünf Haupttopologien. Bei der Ringtopologie sind alle Knoten in einem Ring miteinander verbunden. Die Linien-Topologie ist ähnlich, mit dem Unterschied, dass die Knoten an den Enden nicht mehr direkt miteinander verbunden sind. Bei der Sterntopologie sind alle Knoten mit einem Hauptknoten verbunden. Die Baumtopologie ist eine erweiterte Form der Sterntopologie, bei der mehrere Knoten hierarchisch miteinander verbunden sind. Zuletzt gibt es noch die Bustopologie, bei der alle Knoten an einem Übertragungsmedium hängen. Netzwerke können ebenfalls vermascht sein, was bedeutet, dass die Knoten mehr Verbindungen aufweisen, als theoretisch nötig wären.\cite{topologien-kurthelec} Der Beispielaufbau unten zeigt ein Netzwerk basierend auf der Sterntopologie.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{Bilder/beispielnetzwerk}
+	\caption{Aufbau eines Beispielnetzwerk \cite{network-self}}
+	\label{fig:figure4}
+\end{figure}
+
+
+
+
+
+
 \subsection{Protokolle}
-% tcp, udp, http(s), tls/ssl,  
-% tor
+
+Damit alle Komponenten im Netzwerk richtig miteinander kommunizieren können, wurden standartisierte Protokolle entwickelt, damit alle Komponenten `die gleiche Sprache sprechen`. Es gibt verschiedene Protokolle für verschiedene Zwecke. Beispielsweise gibt es HTTP für den Transfer von Websiten oder FTP zum Senden von Dateien. Da es sehr viele Protokolle gibt und diese recht komplex aufgebaut sind, gibt es das OSI-Modell, um den Netzwerkverkehr mit Protokollen vereinfacht darzustellen. Im nächsten Abschnitt wird dieses Modell genauer beleuchtet.
 
 \subsection{Open System Interconnection Modell}
 
@@ -140,13 +155,80 @@ Wie schon im oberen Teil dargestellt, bietet Wireshark sehr viele Funktionen. So
 	Hierzu gehören die Protokolle TCP\footnote{Transmission Control Protocol} und UDP\footnote{User Datagram Protocol}
 
 \paragraph{Exkurs: UDP/TCP}
-   
-   
+
+Die zwei Protokolle UDP und TCP sind die meist verwendeten Protokolle, weswegen die Protokolle in den oberen Schichten darauf aufbauen. 
+
+TCP ist ein Verbindungsorientertes Protokoll. Der Client und der Server müssen erst eine Verbindung herstellen, damit Daten in beide Richtungen übertragen werden können. TCP verfügt außerdem über ein erhebliches System für die Fehlerkontrolle. Dadurch ist TCP ein sehr zuverlässiges, aber eher langsames Protokoll. Es wird benutzt, um Dateien, Websites oder Bilder zu übertragen.\cite{tcp} In der unten dargestellten Tabelle sind die Eigenschaften übersichtlich aufgefächert. 
+
+\begin{table}[h]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|
+				>{\columncolor[HTML]{C0C0C0}}l |
+				>{\columncolor[HTML]{34FF34}}l |}
+			\hline
+			\cellcolor[HTML]{9B9B9B}Eigentschaften                        & \cellcolor[HTML]{9B9B9B}TCP                               \\ \hline
+			Verbindungsstatus                     & Erfordert eine bestehende Verbindung zur Datenübertragung \\ \hline
+			Datensequenzierung                    & Erfordert Sequenzierung                                   \\ \hline
+			Garantierte Übertragung               & Übertragung wird garantiert                               \\ \hline
+			Neuübertragung von verlorenen Paketen & Neuübertragung von verlorenen Paketen ist möglich         \\ \hline
+			Fehlerüberprüfung                     & Umfangreiche Fehlerüberpfüfung und Bestätigen der Daten   \\ \hline
+			Geschwindigkeit                       & Langsamer als  UDP                                        \\ \hline
+			bestmögliche Verwendung               & Streaming bei Videokonferenzen, VoIP oder Livestreams     \\ \hline
+		\end{tabular}%
+	}
+	\caption{TCP \cite{udp+tcp}}
+	\label{fig:figure11}
+\end{table}
+
+
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\centering
+	\includegraphics[scale=0.15]{Bilder/Datenfluss_TCP}
+	\caption{Datenflussdiagramm TCP\cite{datenflussdiagramm-tcp}}
+	\label{fig:figure6}
+\end{wrapfigure}
+
+Der Verbindungsaufbau läuft wie folgt ab: 
+Der Client sendet eine Anfrage zum Verbindungsaufbau\footnote{SYN-Paket} zum Server. Wenn dies möglich ist, sendet der Server eine Bestätigung\footnote{ACK-Paket} zurück und baut den Kanal auf. Jetzt können der Client und Server miteinander kommunizieren und die Daten können übertragen werden. Wenn ein Datenpaket fehlerhaftes übertragen wird, wird es nochmal geschickt. In der rechten Abbildung ist dieser Datenverkehr in einem Datenflussdiagramm dargestellt. 
+
+UDP ist hingegen ein simpleres und verbindungsloses Protokoll. Das System für Fehlerkontrolle ist eher minimal, weswegen die korrekte Übertragung nicht garantiert ist. Die Daten werden kontinuierlich zum Empfänger geschickt, auch wenn dieser diese nicht empfängt. Dies macht UDP nicht ideal für das Verschicken von Dateien, aber um so besser zum streamen. Da das Protokoll wesentlich schneller ist, kann es mit der benötigten Bandbreite arbeiten kann. Eine Fehlerkontrolle ist bei Streams aufgrund der Datenmenge sowieso nicht möglich. Es ist somit Ideal für das Umsetzen von Videocalls, VoIP\footnote{Voice over IP} oder das Livestreamen auf Videoportalen oder im Fernsehen.\cite{udp} Die genauen Eigenschaften sind in der unteren Tabelle dargestellt. 
+
+\begin{table}[h]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|
+				>{\columncolor[HTML]{C0C0C0}}l |
+				>{\columncolor[HTML]{FE0000}}l |}
+			\hline
+			\cellcolor[HTML]{9B9B9B}Eigentschaften                        & \cellcolor[HTML]{9B9B9B}UDP                                                                       \\ \hline
+			Verbindungsstatus                     & Verbindungslos, keine weiteren Anforderungen \\ \hline
+			Datensequenzierung                    & Keine Sequenzierung                                                                               \\ \hline
+			Garantierte Übertragung               & Keine garantierte Übertragung                                                                     \\ \hline
+			Neuübertragung von verlorenen Paketen & Keine Neuübertragung von verlorenen Paketen                                                       \\ \hline
+			Fehlerüberprüfung                     & Minimale Fehlerberprüfung durch Checksums                                                         \\ \hline
+			Geschwindigkeit                       & Schneller als TCP                                                                                 \\ \hline
+			bestmögliche Verwendung               & Schicken von Dateien, Email, Bilder, Websites, etc.                                               \\ \hline
+		\end{tabular}%
+	}
+	\caption{UDP \cite{udp+tcp}}
+	\label{fig:figure10}
+\end{table}
+	
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\centering
+	\includegraphics[scale=0.15]{Bilder/Datenfluss_UDP}
+	\caption{Datenflussdiagramm UDP\cite{datenflussdiagramm-udp}}
+	\label{fig:figure7}
+\end{wrapfigure}
+
+Der Verbindungsaufbau läuft wie folgt ab: Der Client schickt dem Server ein Anfrage. Daraufhin antwortet der Server direkt mit dem Datenstream, auch wenn der Client den Datenstream nicht mehr aufnimmt. Der Stream bleibt solange offen, bis der Server den Transfer eigenständig schließt.
+
+
 \subsubsection{Netzwerkschicht}
-	Darauf folgt die Netzwerkschicht\footnote{engl: network layer}. Diese gewährt das Kommunizieren zwischen Geräten in verschiedenen, miteinander verbundenen Netzwerken. Beim Versenden, werden die Segmente der Transportschicht erneut in kleinere Datenpakete aufgeteilt und mit weiteren Informationen versehen. Diese Informationen sind für die, auf dem Weg gelegenen, Knoten gedacht, um diesen das Ziel des Pakets aufzuweisen. Es wird der beste physikalisch mögliche Weg ausgesucht, um die Daten sicher an ihr Ziel zu bringen. Dieser Prozess wird Routing\footnote{Quelle!} genannt.
+	Darauf folgt die Netzwerkschicht\footnote{engl: network layer}. Diese gewährt das Kommunizieren zwischen Geräten in verschiedenen, miteinander verbundenen Netzwerken. Beim Versenden, werden die Segmente der Transportschicht erneut in kleinere Datenpakete aufgeteilt und mit weiteren Informationen versehen. Diese Informationen sind für die, auf dem Weg gelegenen, Knoten gedacht, um diesen das Ziel des Pakets aufzuweisen. Es wird der beste physikalisch mögliche Weg ausgesucht, um die Daten sicher an ihr Ziel zu bringen. Dieser Prozess wird Routing genannt.\cite{routing}
 	Wenn sich beide Geräte im selben Netzwerk befinden, wird diese Ebene übersprungen. 
 	
-	Zu den Protokollen für diese Schicht gehören das IP\footnote{Internet Protocol}, das ICMP\footnote{Internet Control Message Protocol}, das IGMP\footnote{Internet Group Message Protocol} und die IPsec\footnote{??} Suite. Ein Beispielgerät wäre ein Router.
+	Zu den Protokollen für diese Schicht gehören das IP\footnote{Internet Protocol}, das ICMP\footnote{Internet Control Message Protocol}, das IGMP\footnote{Internet Group Message Protocol} und die IPsec\footnote{Internet Protocol Security} Suite. Ein Beispielgerät, welches in dieser Schicht agiert, wäre ein Router.
 	
 \subsubsection{Sicherungsschicht}
 	Die Sicherungsschicht\footnote{engl: Data Link Layer} stellt die vorletzte Schicht dar. Diese ist der Netzwerkschicht sehr ähnlich. Der wesentliche Unterschied ist, dass die Sicherungsschicht für die Kommunikation von zwei Geräten innerhalb eines Netzwerks zuständig ist. Die Sicherungsschicht ist ebenfalls für die Fluss- und Fehlerkontrolle in der netzinternen Kommunikation zuständig. 
@@ -161,7 +243,8 @@ Wie schon im oberen Teil dargestellt, bietet Wireshark sehr viele Funktionen. So
 
 
 \section{Analyse}
-In der Analyse soll viel benutzte Software getestet werden. Ich habe mich für Web-Browser entschieden, da diese am meisten benutzt werden\footnote{QUELLE!}. Zu beginn soll die Software getestet werden. Hierfür habe ich einen simplen Test erstellt.
+In der Analyse soll viel benutzte Software getestet werden. Ich habe mich für Web-Browser entschieden, da diese am meisten benutzt werden.\cite{beliebteste-programme} Zu Beginn soll die Software getestet werden. Hierfür habe ich einen simplen Test erstellt.
+
 \subsection{Beispiel}
 In diesem Kapitel soll eine Beispielkommunikation vereinfacht dargestellt werden. Es wird ein lokaler Webserver erstellt und anschließend kontaktiert. Dieser Transfer wird dann durch Wireshark aufgezeichnet.
 
@@ -189,7 +272,7 @@ Code:
 	app.run(host=hostName, port=serverPort) #starten des Servers
 \end{lstlisting}
 
-Mit der `flask`Bibliothek können Webserver in Python leicht umgesetzt werden. Sie erlaubt es Webserver zu erstellen, die auf requests hören und mit dem angefragten Inhalt antworten\cite{flask}
+Mit der `flask` Bibliothek können Webserver in Python leicht umgesetzt werden. Sie erlaubt es Webserver zu erstellen, die auf requests hören und mit dem angefragten Inhalt antworten.\cite{flask}
 
 \paragraph{Weitere Erklärung zum Code:}
 ``Ports sind ein Merkmal der Protokolle TCP und UDP``\cite{ports19}. Diese werden benutzt, um den Datenverkehr zu ordnen. Da auf einem Server oft mehrere Programme aktiv sind, die gleichzeitig über das Netzwerk kommunizieren müssen diese eingeteilt werden, sodass die Pakete nicht durcheinander kommen. Jedes Programm legt seinen Port fest, bzw. bekommt vom Betriebssystem einen Port zugewiesen. Dieser kann zwischen 0 und 65535 liegen.\cite{ports}
@@ -208,17 +291,29 @@ Im nächsten Schritt wird das erste request, mit dem `HTTP` Protocoll angesehen.
 Der Server antwortet mit diesem angeforderten Inhalt \textbf{(siehe: Anlagen, Analyse der response)}. Der Inhalt ist, der oben im Code festgelegte Satz, ``Willkommen in der http Webserver demo``
 
 \subsection{Browser}
-\subsubsection{Mozilla Firefox}
-\subsubsection{Microsoft Edge}
- \subsubsection{Mullvad Browser}
-\subsubsection{Opera Browser}
+\subsection{Aufrufen einer Website}
+\subsection{Streamen von Videos}
 
 
+\section{Fazit}
+
+Dieses Thema hat mir persönlich sehr viel gezeigt. Mir war vorher gar nicht klar, wie viel wirklich im Netzwerk vor sich geht. Sobald man die Wireshark Software öffnet, wird man direkt mit mehreren Requests überschwemmt. Ich finde es trotz dessen bemerkenswert, wie der Datenverkehr durch die ganzen Schritte, optimiert und effizienter gestaltet wird. Jedes einzelne Konzept ist sehr durchdacht und für einen bestimmten Zweck optimiert. Ich finde es trotz dessen die Frage `Was passiert im Netzwerk?` zu beantworten. Wie schon oben festgestellt gibt es viele verschiedene Arten von Netzwerken und deren Verwendungszweck. Jedes Netzwerk bietet somit unterschiedliche Voraussetzungen, die zu verschiedenen Ergebnissen führen. Die Frage, was wirklich übertragen wird spielt in diesem Sinne ebenfalls eine große Rolle. Bevor ich zu diesem Thema recherchiert habe, war ich den Metadaten negativ gegenüber gestanden. Ich habe diese immer als Tracker, zum Sammeln von personenbezogenen Daten angesehen. Jetzt weiß ich mehr. Mir ist klar geworden, dass der Datenverkehr ohne diese Metadaten nicht funktioniert, da diese zur Steuerung des Datenverkehrs nötig sind. Genauso, wie Spongebob nicht ohne Wasser funktioniert. 
 
 
- \section{Fazit}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{Bilder/Spongebob}
+	\caption{Spongebob funktioniert nicht ohne Wasser\cite{spongebob}}
+	\label{fig:figure99}
+\end{figure}
+
 
 % end of text
+
+
+
+
+
 
 \newpage
  \listoffigures
@@ -229,6 +324,9 @@ Der Server antwortet mit diesem angeforderten Inhalt \textbf{(siehe: Anlagen, An
 
 \newpage
 
+
+\large{Ich erkläre hiermit, dass ich die Seminararbeit ohne fremde Hilfe angefertigt und nur die im Literaturverzeichnis angeführten Quellen und Hilfsmittel benutzt habe}
+\newpage
 \centering
 \vspace*{200pt}
 \Huge{\section{Anlagen}}
