@@ -5,7 +5,7 @@
 %title, author, date
 \title{Netzwerkanalyse mit Wireshark: Was passiert im Netzwerk?}
 \author{Luis Herzog}
-\date{April 2023}
+
 
 \begin{document}
 
@@ -79,7 +79,7 @@ In der Informationstechnologie ist ein Netzwerk ein Zusammenschluss mehrerer Com
 	\label{fig:figure5}
 \end{wrapfigure}
 
-Es gibt viele verschiedene Arten von Netzwerken, die unterschiedlich aufgebaut  sein können. Netzwerke werden in Topologien unterteilt. Durch diese Topologien können selbst sehr komplexe Netzwerke gut veranschaulicht werden. Es gibt fünf Haupttopologien. Bei der Ringtopologie sind alle Knoten in einem Ring miteinander verbunden. Die Linien-Topologie ist ähnlich, mit dem Unterschied, dass die Knoten an den Enden nicht mehr direkt miteinander verbunden sind. Bei der Sterntopologie sind alle Knoten mit einem Hauptknoten verbunden. Die Baumtopologie ist eine erweiterte Form der Sterntopologie, bei der mehrere Knoten hierarchisch miteinander verbunden sind. Bei der Bustopologie hängen alle Knoten an einem Übertragungsmedium. Netzwerke können ebenfalls vermascht sein, was bedeutet, dass die Knoten mehr Verbindungen aufweisen, als theoretisch nötig wären. Bei einem vollvermaschten Netzwerk ist jeder Knoten mit allen weiteren Knoten verbunden.\cite{topologien-kurthelec} Der Beispielaufbau in Abbildung 4 zeigt ein Netzwerk basierend auf der Sterntopologie.
+Es gibt viele verschiedene Arten von Netzwerken, die unterschiedlich aufgebaut  sein können. Netzwerke werden in Topologien unterteilt. Durch diese Topologien können selbst sehr komplexe Netzwerke gut veranschaulicht werden. Es gibt fünf Haupttopologien. Bei der Ringtopologie sind alle Knoten in einem Ring miteinander verbunden. Die Linientopologie ist ähnlich, mit dem Unterschied, dass die Knoten an den Enden nicht mehr direkt miteinander verbunden sind. Bei der Sterntopologie sind alle Knoten mit einem Hauptknoten verbunden. Die Baumtopologie ist eine erweiterte Form der Sterntopologie, bei der mehrere Knoten hierarchisch miteinander verbunden sind. Bei der Bustopologie hängen alle Knoten an einem Übertragungsmedium. Netzwerke können ebenfalls vermascht sein, was bedeutet, dass die Knoten mehr Verbindungen aufweisen, als theoretisch nötig wären. Bei einem vollvermaschten Netzwerk ist jeder Knoten mit allen weiteren Knoten verbunden.\cite{topologien-kurthelec} Der Beispielaufbau in Abbildung 4 zeigt ein Netzwerk basierend auf der Sterntopologie.
 
 \begin{figure}[h]
 	\centering
@@ -128,31 +128,31 @@ Damit alle Komponenten im Netzwerk richtig miteinander kommunizieren können, wu
 
 	Das Open System Interconnect\footnote{dt: Offenes System für Kommunikationsverbindungen} Modell, auch OSI-Modell genannt, beschreibt die Voraussetzungen, die für eine Kommunikation innerhalb eines Netzwerks nötig sind. Dieses wurde 1983 von der \glq Internationalen Organisation für Normung\grq standardisiert. Diese Standardisierung ist notwendig, damit sich alle Komponenten im Netzwerk, auch wenn diese von verschiedenen Herstellern produziert wurden, reibungslos miteinander funktionieren. Wenn ein Paket beispielsweise von einem Computer im Netzwerk losgeschickt wird, muss es mehrere Stationen durchlaufen. Das Paket verlässt den Rechner über die Netzwerkkarte und wird durch ein Übertragungsmedium über weitere Netzwerkkomponenten wie Hubs oder Router bis zur Netzwerkkarte des Zielrechners geleitet. Dort wird dieses Interpretiert, um korrekt dargestellt zu werden. All diese Schritte werden durch ein Protokoll festgehalten und durch das OSI-Modell spezifiziert, damit jede Station auf diesem Weg weiß, wohin das Paket möchte, woher es kommt und welche Eigenschaften es hat. So wird ein Standard geschaffen, mit dem alle Computersysteme arbeiten können.
 	
-	Da diese  Datenkommunikation relativ komplex ist, wurde das Modell in sieben Schichten eingeteilt. Die oberen vier Schichten gehören zu den anwendungsorientierten Schichten\footnote{engl: host layer}. Die unteren drei Schichten werden Transportschichten\footnote{engl: media layer} genannt. Jede Schicht behandelt eine Anforderung, die für eine funktionierende Kommunikation erfüllt werden muss. Ein zu übertragendes Paket durchläuft vor der Versendung die Schichten 7 - 2, wobei dem Paket bei jeder Schicht Protokollinformationen hinzugefügt werden, die dann im Protokoll des Datenpaketes auffindbar sind. Die erste und letzte Schicht wandelt das Paket in technisch übertragbare Daten um und schickt dieses über das Übertragungsmedium weg. Das Medium kann hierbei ein Kabel sein oder aus einer Antenne bestehen. Auf der Empfängerseite wird dieser Prozess rückwärts durchgeführt. Hierbei wird die jeweilige Protokollinformation nach der Interpretierung durch die zuständige Schicht entfernt, bis der Inhalt des Pakets zum Vorschein kommt.
+	Da diese  Datenkommunikation relativ komplex ist, wurde das Modell in sieben Schichten eingeteilt. Die oberen vier Schichten gehören zu den anwendungsorientierten Schichten\footnote{engl: host layer}. Die unteren drei Schichten werden Transportschichten\footnote{engl: media layer} genannt. Jede Schicht behandelt eine Anforderung, die für eine funktionierende Kommunikation erfüllt werden muss. Ein zu übertragendes Paket durchläuft vor der Versendung die Schichten 7 - 2, wobei dem Paket bei jeder Schicht Protokollinformationen hinzugefügt werden, die dann im Protokoll des Datenpaketes auffindbar sind. Die erste und letzte Schicht wandelt das Paket in technisch übertragbare Daten um und schickt dieses über das Übertragungsmedium weg. Das Medium kann hierbei ein Kabel sein oder aus einer Antenne bestehen. Auf der Empfängerseite wird dieser Prozess rückwärts durchgeführt. Hierbei wird die jeweilige Protokollinformation nach der Interpretierung durch die zuständige Schicht entfernt, bis der Inhalt des Pakets zum Vorschein kommt.\cite{osi-netzwerkecom}
 	
 	Im Folgenden werden die einzelnen Schichten beleuchtet, um einen besseren Einblick in die Datenübertragung zu gewähren.
 
 \subsubsection{Anwendungsschicht}
 	Die Anwendungsschicht\footnote{engl: application layer} stellt die Daten dar, mit welchen der Nutzer interagiert. Softwareanwendungen, wie Webbrowser und E-Mail-Clients stützen sich auf die siebte Schicht, um dem Nutzer aussagekräftige Daten zu präsentieren. 
 	
-	Hierzu gehören Protokolle, wie HTTP\footnote{Hyper Text Transfer Protocol}, welches benutzt wird, um Websites welche in HTML\footnote{Hyper Text Markup Language} geschrieben sind zu präsentieren, oder SMTP\footnote{Simple Mail Transfer Protocol}, welches benutzt wird um E-Mails darzustellen.
+	Hierzu gehören Protokolle, wie HTTP\footnote{Hyper Text Transfer Protocol}, welches benutzt wird, um Websites welche in HTML\footnote{Hyper Text Markup Language} geschrieben sind zu präsentieren, oder SMTP\footnote{Simple Mail Transfer Protocol}, welches benutzt wird um E-Mails darzustellen.\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 
 \subsubsection{Präsentationsschicht}
 	Die Präsentationsschicht\footnote{engl: presentation layer} ist in erster Linie dafür verantwortlich, die Daten so aufzubereiten, dass diese in der Anwendungsschicht verwendet werden können. Ein wichtiger Teil dabei ist die Verschlüsselung. Die Präsentationsschicht muss, wenn die Geräte durch eine verschlüsselte Verbindung kommunizieren, auf Senderseite eine Verschlüsselung hinzufügen und diese auf der Empfängerseite korrekt dekodieren. 
 	
-	Ebenso ist die Präsentationsschicht für die Komprimierung der Daten verantwortlich. Dadurch kann die Geschwindigkeit und Effizienz der Kommunikation erhöht und die benötigte Bandbreite minimiert werden.
+	Ebenso ist die Präsentationsschicht für die Komprimierung der Daten verantwortlich. Dadurch kann die Geschwindigkeit und Effizienz der Kommunikation erhöht und die benötigte Bandbreite minimiert werden.\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 
 \subsubsection{Sitzungsschicht}
 	Anschließend folgt die Sitzungsschicht\footnote{engl: session layer}. Diese ist für das Öffnen und Schließen der Kommunikation der beiden Geräte zuständig. Hier wird die Kommunikation in Sitzungen eingeteilt. Eine Sitzung reicht von der Öffnung bis zur Schließung der Verbindung. Somit wird sicher gestellt, dass die Sitzung lange genug geöffnet bleibt, um alle Daten zu übertragen. Wenn alle Daten erfolgreich übertragen wurden, leitet die Sitzungsschicht die umgehende Schließung der Sitzung ein, um Ressourcen zu sparen. 
 	
-	Eine weitere sehr wichtige Aufgabe der Sitzungsschicht ist die Sicherung der Datenverbindung durch synchronisierte Checkpoints. Wenn beispielsweise bei der Übertragung einer 450 Megabyte großen Datei bei 234 Megabyte die Verbindung unterbrochen wird, kann nach einer Neuverbindung die Übertragung bei z.B. 230 Megabyte wieder aufgenommen werden, da es einen Checkpoint der Datei bei 230 Megabyte gibt.
+	Eine weitere sehr wichtige Aufgabe der Sitzungsschicht ist die Sicherung der Datenverbindung durch synchronisierte Checkpoints. Wenn beispielsweise bei der Übertragung einer 450 Megabyte großen Datei bei 234 Megabyte die Verbindung unterbrochen wird, kann nach einer Neuverbindung die Übertragung bei z.B. 230 Megabyte wieder aufgenommen werden, da es einen Checkpoint der Datei bei 230 Megabyte gibt.\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 
 \subsubsection{Transportschicht}
 	In der Transportschicht\footnote{engl: transport layer} werden die Datenpakete vor dem Versenden in Segmente zerlegt. Im Empfangsgerät werden diese Segmente durch die Transportschicht wieder korrekt zusammengesetzt, sodass diese von der Sitzungsschicht benutzt werden können. 
 	
 	Die Transportebene ist ebenfalls für die Fluss- und Fehlersteuerung zuständig. Hierbei wird die Übertragungsgeschwindigkeit so festgelegt, dass ein ggf. langsamer Empfänger nicht durch die ggf. schnelle Geschwindigkeit des Senders überfordert wird. Beim Empfänger wird durch die Fehlersteuerung ein vollständiger Empfang aller Daten sichergestellt. Wenn die empfangenen Daten nicht vollständig sind, werden diese durch dieses System erneut angefordert, um die Vollständigkeit der Daten zu garantieren. 
 	
-	Hierzu gehören die Protokolle TCP\footnote{Transmission Control Protocol} und UDP\footnote{User Datagram Protocol}
+	Hierzu gehören die Protokolle TCP\footnote{Transmission Control Protocol} und UDP\footnote{User Datagram Protocol}\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 
 \subsubsection{Exkurs: UDP/TCP}
 
@@ -228,15 +228,15 @@ In Abbildung 6 ist der Datenverkehr in einem Datenflussdiagramm dargestellt.\cit
 	Auf die Transportschicht folgt die Netzwerkschicht\footnote{engl: network layer}. Diese gewährt das Kommunizieren zwischen Geräten in verschiedenen, miteinander verbundenen Netzwerken. Beim Versenden werden die Segmente der Transportschicht erneut in kleinere Datenpakete aufgeteilt und mit weiteren Informationen versehen. Diese Informationen sind für die auf dem Weg gelegenen Knoten gedacht, um diesen das Ziel des Pakets aufzuweisen. Es wird der beste physikalisch mögliche Weg ausgesucht, um die Daten sicher an ihr Ziel zu bringen. Dieser Prozess wird Routing genannt.\cite{routing}
 	Wenn sich beide Geräte im selben Netzwerk befinden, wird diese Ebene übersprungen. 
 	
-	Zu den Protokollen für diese Schicht gehören das IP\footnote{Internet Protocol}, das ICMP\footnote{Internet Control Message Protocol}, das IGMP\footnote{Internet Group Message Protocol} und die IPsec\footnote{Internet Protocol Security}. Ein Beispielgerät, welches in dieser Schicht agiert, wäre ein Router.
+	Zu den Protokollen für diese Schicht gehören das IP\footnote{Internet Protocol}, das ICMP\footnote{Internet Control Message Protocol}, das IGMP\footnote{Internet Group Message Protocol} und die IPsec\footnote{Internet Protocol Security}. Ein Beispielgerät, welches in dieser Schicht agiert, wäre ein Router.\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 	
 \subsubsection{Sicherungsschicht}
 	Die Sicherungsschicht\footnote{engl: Data Link Layer} stellt die vorletzte Schicht dar. Diese ist der Netzwerkschicht sehr ähnlich. Der wesentliche Unterschied ist, dass die Sicherungsschicht für die Kommunikation von zwei Geräten innerhalb eines Netzwerks zuständig ist. Die Sicherungsschicht ist ebenfalls für die Fluss- und Fehlerkontrolle in der netzinternen Kommunikation zuständig. 
 	
-	Beispielgeräte für diese Ebene sind Bridges und Switches.
+	Beispielgeräte für diese Ebene sind Bridges und Switches.\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 
 \subsubsection{Bitübertragungsschicht}
-	Die unterste Schicht wird durch die Bitübertragungsschicht\footnote{engl: physical layer} dargestellt. Hier sind die Daten als Bitstrom vorhanden, eine Zeichenkette bestehend aus Einsen und Nullen. Hier muss sich auf mehrere Eigenschaften geeinigt werden. Zu Beginn müssen die Gegebenheiten des Übertragungsmediums festgelegt werden. Dies betrifft die Wahl des Materials und die Funktion der einzelnen Leitungen. Ein Kabel kann beispielsweise aus Kupfer oder Glasfaser bestehen und zwei innere Leitungen haben: eine Datenleitung und eine Steuerleitung. Bei der Übertragung über Funk wird beispielsweise durch Luft übertragen. Es muss ebenfalls die Übertragungsrichtung und Geschwindigkeit festgelegt werden. Ein Kabel kann in eine Richtung\footnote{simplex}, abwechselnd in beide Richtungen\footnote{halb-duplex} oder in beide Richtungen gleichzeitig\footnote{duplex} übertragen.
+	Die unterste Schicht wird durch die Bitübertragungsschicht\footnote{engl: physical layer} dargestellt. Hier sind die Daten als Bitstrom vorhanden, eine Zeichenkette bestehend aus Einsen und Nullen. Hier muss sich auf mehrere Eigenschaften geeinigt werden. Zu Beginn müssen die Gegebenheiten des Übertragungsmediums festgelegt werden. Dies betrifft die Wahl des Materials und die Funktion der einzelnen Leitungen. Ein Kabel kann beispielsweise aus Kupfer oder Glasfaser bestehen und zwei innere Leitungen haben: eine Datenleitung und eine Steuerleitung. Bei der Übertragung über Funk wird beispielsweise durch Luft übertragen. Es muss ebenfalls die Übertragungsrichtung und Geschwindigkeit festgelegt werden. Ein Kabel kann in eine Richtung\footnote{simplex}, abwechselnd in beide Richtungen\footnote{halb-duplex} oder in beide Richtungen gleichzeitig\footnote{duplex} übertragen.\cite{osi-schichten-cloudflare}\cite{osi-schichten-netzwerkecom}
 
 
 \section{Analyse}
@@ -285,13 +285,13 @@ Nun muss der Server kontaktiert werden. Dies kann man mit einem Webbrowser mache
 
 Im nächsten Schritt wird die erste Anfrage, mit dem \glq HTTP\grq Protokoll angesehen. (siehe: Anlagen, Analyse des \glq GET\grq requests). Unten rechts ist der Inhalt des Pakets zu erkennen. Darin sind einige Daten zum Browser enthalten und zum Inhalt, welcher angefragt wird. Diese Daten werden später in der Analyse weiter durchleuchtet.
 
-Der Server antwortet mit diesem angeforderten Inhalt \textbf{(siehe: Anlagen, Analyse der response)}. Der Inhalt ist, der oben im Code festgelegte Satz, ``Willkommen in der http Webserver demo``
+Der Server antwortet mit diesem angeforderten Inhalt (siehe: Anlagen, Analyse der response). Der Inhalt ist, der oben im Code festgelegte Satz, ``Willkommen in der http Webserver demo``
 
 \subsection{Browser}
 
-In dieser Analyse wird hauptsächlich auf das DNS\footnote{Domain Name System} Protokoll geschaut. Dieses Protokoll erlaubt dem Client mit dem \glq Domain Name System\grq zu kommunizieren. Dieses System besteht aus Servern, die Hostnamen in IP-Adressen umwandeln können. Hostnames sind die von Menschen erkennbaren Adressen von Websites, wie \glq google.com\grq oder \glq luisherzog.de\grq. IP-Adressen sind die für Rechner verständlichen Adressen von Servern, wie z.B. \glq 192.169.11.4\grq oder \glq 115.234.34.2\grq. Das DNS-System enthält eine Liste dieser Hostnames mit den dazugehörigen IP-Adressen. Wenn wir beispielsweise mit dem Browser eine Website besuchen wollen, wird durch das DNS-Protokoll eine Anfrage an das DNS-System mit der URL\footnote{Uniform Resource Locator} geschickt. In der URL ist der Hostname des Servers enthalten. Das DNS-System sucht in der Liste und leitet das Datenpaket auf den Weg zum Zielserver.\cite{dns-cloudflare} Im Netzwerk wird diese Aufgabe durch den Router übernommen.
+In dieser Analyse wird hauptsächlich auf das DNS\footnote{Domain Name System} Protokoll geschaut. Dieses Protokoll erlaubt dem Client mit dem \glq Domain Name System\grq zu kommunizieren. Dieses System besteht aus Servern, die Hostnamen in IP-Adressen umwandeln können. Hostnames sind die von Menschen erkennbaren Adressen von Websites, wie \glq google.com\grq oder \glq luisherzog.de\grq. IP-Adressen sind die von Rechnern verstehbaren Adressen von Servern, wie z.B. \glq 192.169.11.4\grq oder \glq 115.234.34.2\grq. Das DNS-System enthält eine Liste dieser Hostnames mit den dazugehörigen IP-Adressen. Wenn wir beispielsweise mit dem Browser eine Website besuchen wollen, wird durch das DNS-Protokoll eine Anfrage an das DNS-System mit der URL\footnote{Uniform Resource Locator} geschickt. In der URL ist der Hostname des Servers enthalten. Das DNS-System sucht in der Liste und leitet das Datenpaket auf den Weg zum Zielserver.\cite{dns-cloudflare} Im Netzwerk wird diese Aufgabe durch den Router übernommen.
 
-Durch das Analysieren des DNS-verkehrs, kann man herausgefunden, welche Server kontaktiert werden. Der Dateninhalt des Pakets ist oft verschlüsselt und somit unlesbar, was eine tiefere Analyse der verschickten Daten unmöglich macht. 
+Durch das Analysieren des DNS-Verkehrs, kann man herausfinden, welche Server kontaktiert werden. Der Dateninhalt des Pakets ist oft verschlüsselt und somit unlesbar, was eine tiefere Analyse der verschickten Daten unmöglich macht. 
 
 Ich habe mich beispielsweise mit dem Firefox Browser auseinandergesetzt. Die meisten Browser agieren im Netzwerkverkehr ähnlich.
 
@@ -300,12 +300,12 @@ Ich habe mich beispielsweise mit dem Firefox Browser auseinandergesetzt. Die mei
 Beim Öffnen  von Firefox werden mehrere Anfragen an das DNS-System getätigt. 
 \begin{enumerate}
 	\item Firefox macht die IP-Adresse des Routers im Heimnetzwerk ausfindig. 
-	\item Firefox schaut, ob ein Captive Portal vorhanden ist. \glqq Ein Captive Portal ist eine Webseite, die der Benutzer eines öffentlich zugänglichen Netzwerks ansehen und mit ihr interagieren muss, bevor der Zugang gewährt wird.\grqq\cite{captiveportal-computerweekly} Diese sind oft in öffentlichen Plätzen, wie Flughäfen, Cafés oder in Schulnetzwerken verwendet. Dies erzielt Firefox mit dem Kontaktieren der Adresse \glq detectportal.firefox.com\grq. Hierbei testet Firefox ebenfalls, ob das Netzwerk IPv6 und andere Technologien unterstützt.\cite{captiveportal-firefox}
-	\item Die Adresse \glq api.accounts.firefox.com\grq wird von Firefox kontaktiert. Dies liegt höchstwahrscheinlich daran, dass ich einen Firefox Account benutze und dadurch automatisch anmeldet werde.
-	\item Diese Anfrage ist kontroverser zu Betrachten. Die Anfrage geht an \glq incoming.telemetry.mozilla.org\grq. Was hier genau verschickt wird, ist unbekannt. Der Adresse nach zu urteilen handelt es sich hier um Messungsdaten, die Firefox aufnimmt und an die Entwickler schickt, um Firefox zu verbessern. Welche Daten das genau sind und ob diese Daten ggf. die Privatsphäre der Nutzer beeinträchtigen kann aus Wireshark nicht ausgelesen werden, da der Inhalt verschlüsselt ist.
+	\item Firefox schaut, ob ein Captive Portal vorhanden ist. \glqq Ein Captive Portal ist eine Webseite, die der Benutzer eines öffentlich zugänglichen Netzwerks ansehen und mit ihr interagieren muss, bevor der Zugang gewährt wird.\grqq\cite{captiveportal-computerweekly} Diese sind oft in öffentlichen Plätzen, wie Flughäfen, Cafés oder in Schulnetzwerken verwendet. Dies erzielt Firefox mit dem Kontaktieren der Adresse \glq detectportal.firefox.com\grq. Hierbei testet Firefox ebenfalls, ob das Netzwerk andere Technologien,  wie IPv6 unterstützt.\cite{captiveportal-firefox}
+	\item Die Adresse \glq api.accounts.firefox.com\grq wird von Firefox kontaktiert. Dies liegt höchstwahrscheinlich daran, dass ich einen Firefox Account benutze und dadurch automatisch angemeldet werde.
+	\item Diese Anfrage ist kontroverser zu betrachten. Die Anfrage geht an \glq incoming.telemetry.mozilla.org\grq. Was hier genau verschickt wird, ist unbekannt. Der Adresse nach zu urteilen, handelt es sich hier um Messungsdaten, die Firefox aufnimmt und an die Entwickler schickt, um Firefox zu verbessern. Welche Daten das genau sind und ob diese Daten ggf. die Privatsphäre der Nutzer beeinträchtigen, kann aus Wireshark nicht ausgelesen werden, da der Inhalt verschlüsselt ist.
 	\item Firefox kontaktiert die Adresse \glq push.services.mozilla.com \grq. Hier wird der Adresse nach zu urteilen, nach Push-Benachrichtigungen gesucht, die noch zugestellt werden müssen. 
 	\item \glq token.services.mozilla.com\grq ist die nächste Adresse, die kontaktiert wird. Hierbei geht es um die Sync Funktionalität eines Firefox Accounts. Firefox schaut hier, ob sich der synchronisierte Inhalt innerhalb eines Firefox Accounts verändert hat. Dies betrifft beispielsweise Tabs, Lesezeichen und zuletzt besuchte Websites. Diese Anfrage ist gut dokumentiert und erlaubt es somit, diese Funktion auch selbst zu hosten.\cite{syncstorage-firefox} Bei mir wurde es unter \glq prod.tokenserver.prod.cloudops.mozgcp.net\grq gehostet, was die nächste Adresse war, die kontaktiert wurde.
-	\item Zuletzt wird den Extensions erlaubt, Anfragen zu stellen. Davor wird noch die Adresse \glq services.addons.mozilla.org \grq kontaktiert, wahscheinlich um nach updates für die jeweiligen Extensions zu schauen.
+	\item Zuletzt wird den Extensions erlaubt, Anfragen zu stellen. Davor wird noch die Adresse \glq services.addons.mozilla.org \grq kontaktiert, wahrscheinlich um nach updates für die jeweiligen Extensions zu schauen.
 \end{enumerate}
 \newpage
 	Hierbei muss beachtet werden, dass Firefox noch viel mehr Anfragen stellt. Diese gehen zumeist an Zertifikatstationen, um die Sicherheit der Verbindung zu gewähren. Ebenso werden Adressen auch mehrfach kontaktiert, was in der oberen Liste nicht mit inbegriffen ist. Die Abbildung 7 zeigt den Umfang der Anfragen.
@@ -319,7 +319,7 @@ Beim Öffnen  von Firefox werden mehrere Anfragen an das DNS-System getätigt.
 
 \section{Fazit}
 
-Dieses Thema hat mir sehr viel gezeigt. Mir war vorher nicht klar, wie viel wirklich im Netzwerk vor sich geht. Sobald man die Wireshark Software öffnet, wird man direkt mit mehreren Anfragen überschwemmt. Ich finde es trotzdem bemerkenswert, wie der Datenverkehr durch die ganzen oben genannten Schritte optimiert und effizienter gestaltet wird. Jedes einzelne Konzept ist sehr durchdacht und für einen bestimmten Zweck optimiert. Ich finde es trotz dessen schwierig auf Frage \glqq Was passiert im Netzwerk?\grqq zu antworten. Wie in dieser Arbeit festgestellt gibt es viele verschiedene Arten von Netzwerken mit verschiedenen Verwendungszwecken. Jedes Netzwerk bietet somit unterschiedliche Voraussetzungen, die zu verschiedenen Ergebnissen führen. Die Frage, was wirklich übertragen wird, spielt in diesem Sinne ebenfalls eine große Rolle. Bevor ich zu diesem Thema recherchiert habe, war ich den Metadaten in Protokollheadern negativ gegenüber gestanden. Ich habe diese immer als Tracker, zum Sammeln von personenbezogenen Daten angesehen. Jetzt weiß ich mehr. Mir ist klar geworden, dass der Datenverkehr ohne diese Metadaten nicht funktioniert. Spongebob aus der Kinderserie \glqq Spongebob Schwammkopf\grqq funktioniert ohne Wasser ebenso wenig, wie der Datenverkehr ohne Metadaten.
+Dieses Thema hat mir sehr viel gezeigt. Mir war vorher nicht klar, wie viel wirklich im Netzwerk vor sich geht. Sobald man die Wireshark Software öffnet, wird man direkt mit mehreren Anfragen überschwemmt. Ich finde es trotzdem bemerkenswert, wie der Datenverkehr durch die ganzen oben genannten Schritte optimiert und effizienter gestaltet wird. Jedes einzelne Konzept ist sehr durchdacht und für einen bestimmten Zweck optimiert. Ich finde es trotz dessen schwierig auf Frage \glqq Was passiert im Netzwerk?\grqq zu antworten. Wie in dieser Arbeit festgestellt gibt es viele verschiedene Arten von Netzwerken mit verschiedenen Verwendungszwecken. Jedes Netzwerk bietet somit unterschiedliche Voraussetzungen, die zu verschiedenen Ergebnissen führen. Die Frage, was wirklich übertragen wird, spielt in diesem Sinne ebenfalls eine große Rolle. Bevor ich zu diesem Thema recherchiert habe, war ich den Metadaten in Protokollheadern negativ gegenüber gestanden. Ich habe diese immer als Tracker, zum Sammeln von personenbezogenen Daten angesehen. Jetzt weiß ich mehr. Mir ist klar geworden, dass der Datenverkehr ohne diese Metadaten nicht funktioniert. Spongebob aus der Kinderserie \glqq Spongebob Schwammkopf\grqq wollte das Wasser vorher auch nicht bekommen. Zum Schluss fällt allerdings auf, dass er ohne Wasser ebenso wenig funktioniert, wie der Datenverkehr ohne Metadaten.
 
 
 \begin{figure}[h]
@@ -345,10 +345,18 @@ Dieses Thema hat mir sehr viel gezeigt. Mir war vorher nicht klar, wie viel wirk
 \bibliography{gg}
 
 \newpage
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\vspace*{40pt}
+\begin{center}
+	\large{Ich erkläre hiermit, dass ich die Seminararbeit ohne fremde Hilfe angefertigt und nur die im Literaturverzeichnis angeführten Quellen und Hilfsmittel benützt habe.}
+	\vspace{40pt}
+	\hrule
+\end{center}
+	\scriptsize{\textit{Ort, Datum, Unterschrift des Verfassers}}
 
-
-\large{Ich erkläre hiermit, dass ich die Seminararbeit ohne fremde Hilfe angefertigt und nur die im Literaturverzeichnis angeführten Quellen und Hilfsmittel benutzt habe}
 \newpage
+\pagestyle{empty}
 \centering
 \vspace*{200pt}
 \Huge{\section{Anlagen}}
@@ -371,7 +379,7 @@ Dieses Thema hat mir sehr viel gezeigt. Mir war vorher nicht klar, wie viel wirk
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{Bilder/Anlagen_3}
-	\caption{Das Wireshark interface, der Datentransfer wurde aufgezeichnet \cite{screenshots-self}}
+	\caption{Das Wireshark interface, der Datentransfer wurde aufgezeichnet\cite{screenshots-self}}
 	\label{fig:figure32}
 \end{figure}
 
